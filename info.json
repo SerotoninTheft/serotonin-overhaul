@@ -1,0 +1,10 @@
+{
+  "name": "serotonin-overhaul",
+  "version": "0.0.3",
+  "title": "Serotonin's Silly Overhaul",
+  "author": "Serotonintheft",
+  "description": "Overhaul mod that changes the vanilla recipes to be substantially more complicated. Designed to be a challenge.",
+  "factorio_version": "1.1",
+  "dependencies": ["base >= 1.1.0"],
+  "thumbnail": "images/thumbnail.png"
+}
