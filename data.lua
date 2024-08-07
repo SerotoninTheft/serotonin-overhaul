@@ -33,7 +33,7 @@ data:extend({
     name = "copper-cable",
     ingredients = {{"copper-plate", 3}, {"coal", 1}},
     result = "copper-cable",
-    result_count = 9,
+    result_count = 7,
     energy_required = 0.5 * 9, -- default energy required is 0.5
   },
   {
@@ -42,12 +42,12 @@ data:extend({
     ingredients = {
       {"stone-brick", 2},
       {"copper-plate", 3},
-      {"copper-cable", 10},
+      {"copper-cable", 20},
       {"iron-stick", 4},
       {"iron-plate", 2}
     },
     result = "electronic-circuit",
-    result_count = 10,
+    result_count = 13,
     energy_required = 0.5 * 10, -- default energy required is 0.5
   },
   {
@@ -56,7 +56,7 @@ data:extend({
     category = "crafting-with-fluid",
     ingredients = {
       {"concrete", 3},
-      {"copper-cable", 30},
+      {"copper-cable", 60},
       {"electronic-circuit", 5},
       {"plastic-bar", 15},
       {"decider-combinator", 1},
@@ -65,7 +65,7 @@ data:extend({
       {type = "fluid", name = "petroleum-gas", amount = 20}
     },
     result = "advanced-circuit",
-    result_count = 20,
+    result_count = 24,
     energy_required = 6 * 20, -- default energy required is 6
     enabled = false
   },
@@ -196,7 +196,7 @@ data:extend({
     name = "low-density-structure",
     category = "crafting-with-fluid",
     ingredients = {
-      {"copper-plate", 3},
+      {"copper-plate", 8},
       {"plastic-bar", 4},
       {"steel-plate", 2},
       {"refined-concrete", 4},
@@ -747,7 +747,7 @@ data:extend({
       {"iron-plate", 2},
       {"electronic-circuit", 3},
       {"battery", 2},
-      {"copper-plate", 1},
+      {"copper-plate", 10},
       {"medium-electric-pole", 4}
     },
     result = "substation",
@@ -872,6 +872,24 @@ data:extend({
   }, 
   {
     type = "recipe",
+    name = "logistic-chest-buffer",
+    category = "crafting-with-fluid",
+    ingredients = {
+      {"low-density-structure", 200},
+      {"processing-unit", 150},
+      {"rocket-control-unit", 240},
+      {"refined-hazard-concrete", 300},
+      {"substation", 100},
+      {"steel-chest", 50},
+      {type = "fluid", name = "sulfuric-acid", amount = 3000}
+    },
+    result = "logistic-chest-buffer",
+    result_count = 1,
+    energy_required = 100 * 1, -- default energy required is 5
+    enabled = false
+  }, 
+  {
+    type = "recipe",
     name = "repair-pack",
     ingredients = {
       {"electronic-circuit", 1},
@@ -915,7 +933,7 @@ data:extend({
     name = "solar-panel",
     category = "crafting-with-fluid",
     ingredients = {
-      {"copper-plate", 3},
+      {"copper-plate", 6},
       {"electronic-circuit", 3},
       {"steel-plate", 4},
       {"small-lamp", 2},
@@ -947,7 +965,7 @@ data:extend({
     name = "heat-pipe",
     category = "crafting-with-fluid",
     ingredients = {
-      {"copper-plate", 20},
+      {"copper-plate", 50},
       {"steel-plate", 15},
       {"concrete", 4},
       {type = "fluid", name = "light-oil", amount = 10},
@@ -1312,5 +1330,390 @@ data:extend({
     result_count = 2,
     energy_required = 0.5 * 2, -- default energy required is 0.5
     enabled = false
+  }
+})
+
+
+
+
+
+-- oil recipes
+data:extend({
+  {
+    type = "recipe",
+    name = "basic-oil-processing",
+    category = "oil-processing",
+    energy_required = 5,
+    enabled = false,
+    ingredients =
+    {
+      {type="fluid", name="crude-oil", amount=103},
+      {type="item", name="coal", amount=3},
+      {type="item", name="copper-plate", amount=1},
+      {type="fluid", name="steam", amount=35}
+    },
+    results=
+    {
+      {type="fluid", name="petroleum-gas", amount=88}
+    },
+    icon = "__base__/graphics/icons/fluid/basic-oil-processing.png",
+    icon_size = 64,
+    subgroup = "fluid-recipes",
+    order = "a[oil-processing]-a[basic-oil-processing]"
+  },
+  {
+    type = "recipe",
+    name = "advanced-oil-processing",
+    category = "oil-processing",
+    energy_required = 5,
+    enabled = false,
+    ingredients =
+    {
+      {type="fluid", name="crude-oil", amount=96},
+      {type="item", name="solid-fuel", amount=5},
+      {type="item", name="copper-cable", amount=4},
+      {type="fluid", name="sulfuric-acid", amount=27}
+    },
+    results=
+    {
+      {type="fluid", name="heavy-oil", amount=69},
+      {type="fluid", name="light-oil", amount=72},
+      {type="fluid", name="petroleum-gas", amount=86}
+    },
+    icon = "__base__/graphics/icons/fluid/advanced-oil-processing.png",
+    icon_size = 64,
+    subgroup = "fluid-recipes",
+    order = "a[oil-processing]-b[advanced-oil-processing]"
+  },
+  {
+    type = "recipe",
+    name = "sulfuric-acid",
+    category = "chemistry",
+    energy_required = 1,
+    enabled = false,
+    ingredients =
+    {
+      {type="item", name="sulfur", amount=6},
+      {type="fluid", name="steam", amount=62},
+      {type="fluid", name="petroleum-gas", amount=44},
+      {type="item", name="coal", amount=2},
+      {type="item", name="copper-plate", amount=3},
+    },
+    results=
+    {
+      {type="fluid", name="sulfuric-acid", amount=109}
+    },
+    icon = "__base__/graphics/icons/fluid/sulfuric-acid.png",
+    icon_size = 64,
+    subgroup = "fluid-recipes",
+    order = "a[fluid-chemistry]-b[sulfuric-acid]"
+  },
+  {
+    type = "recipe",
+    name = "heavy-oil-cracking",
+    category = "chemistry",
+    energy_required = 2,
+    enabled = false,
+    ingredients =
+    {
+      {type="fluid", name="heavy-oil", amount=54},
+      {type="fluid", name="steam", amount=41},
+      {type="item", name="coal", amount=1},
+      {type="item", name="copper-ore", amount=2},
+    },
+    results=
+    {
+      {type="fluid", name="light-oil", amount=57}
+    },
+    icon = "__base__/graphics/icons/fluid/heavy-oil-cracking.png",
+    icon_size = 64,
+    subgroup = "fluid-recipes",
+    order = "b[fluid-chemistry]-a[heavy-oil-cracking]"
+  },
+  {
+    type = "recipe",
+    name = "light-oil-cracking",
+    category = "chemistry",
+    energy_required = 2,
+    enabled = false,
+    ingredients =
+    {
+      {type="fluid", name="light-oil", amount=51},
+      {type="fluid", name="steam", amount=36},
+      {type="item", name="stone", amount=1},
+      {type="item", name="copper-ore", amount=2},
+    },
+    results=
+    {
+      {type="fluid", name="petroleum-gas", amount=46}
+    },
+    icon = "__base__/graphics/icons/fluid/light-oil-cracking.png",
+    icon_size = 64,
+    subgroup = "fluid-recipes",
+    order = "b[fluid-chemistry]-b[light-oil-cracking]"
+  },
+  {
+    type = "recipe",
+    name = "lubricant",
+    category = "chemistry",
+    energy_required = 1,
+    enabled = false,
+    ingredients =
+    {
+      {type="fluid", name="heavy-oil", amount=34},
+      {type="item", name="coal", amount=1},
+      {type="item", name="plastic-bar", amount=3},
+      {type="fluid", name="steam", amount=20}
+    },
+    results=
+    {
+      {type="fluid", name="lubricant", amount=67}
+    },
+    icon = "__base__/graphics/icons/fluid/lubricant.png",
+    icon_size = 64,
+    subgroup = "fluid-recipes",
+    order = "b[fluid-chemistry]-c[lubricant]"
+  },
+  {
+    type = "recipe",
+    name = "plastic-bar",
+    category = "chemistry",
+    energy_required = 1,
+    enabled = false,
+    ingredients =
+    {
+      {type="fluid", name="petroleum-gas", amount=27},
+      {type="item", name="coal", amount=2},
+      {type="fluid", name="crude-oil", amount=5}
+    },
+    results=
+    {
+      {type="item", name="plastic-bar", amount=4}
+    },
+    icon = "__base__/graphics/icons/plastic-bar.png",
+    icon_size = 64,
+    subgroup = "raw-material",
+    order = "c[plastic-bar]"
+  },
+  {
+    type = "recipe",
+    name = "sulfur",
+    category = "chemistry",
+    energy_required = 1,
+    enabled = false,
+    ingredients =
+    {
+      {type="fluid", name="petroleum-gas", amount=32},
+      {type="item", name="wood", amount=1},
+      {type="fluid", name="steam", amount=16}
+    },
+    results=
+    {
+      {type="item", name="sulfur", amount=3}
+    },
+    icon = "__base__/graphics/icons/sulfur.png",
+    icon_size = 64,
+    subgroup = "raw-material",
+    order = "b[sulfur]"
+  },
+  {
+    type = "recipe",
+    name = "battery",
+    category = "crafting-with-fluid",
+    energy_required = 5,
+    enabled = false,
+    ingredients =
+    {
+      {type="fluid", name="sulfuric-acid", amount=43},
+      {type="item", name="iron-plate", amount=1},
+      {type="item", name="copper-plate", amount=1},
+      {type="item", name="sulfur", amount=1},
+      {type="item", name="green-wire", amount=1},
+      {type="item", name="red-wire", amount=1},
+
+    },
+    results=
+    {
+      {type="item", name="battery", amount=3}
+    },
+    icon = "__base__/graphics/icons/battery.png",
+    icon_size = 64,
+    subgroup = "intermediate-product",
+    order = "e[battery]"
+  },
+  {
+    type = "recipe",
+    name = "explosives",
+    category = "chemistry",
+    energy_required = 4,
+    enabled = false,
+    ingredients =
+    {
+      {type="item", name="sulfur", amount=1},
+      {type="item", name="coal", amount=1},
+      {type="fluid", name="crude-oil", amount=10},
+      {type="item", name="iron-plate", amount=2},
+      {type="fluid", name="steam", amount=20}
+    },
+    results=
+    {
+      {type="item", name="explosives", amount=5}
+    },
+    icon = "__base__/graphics/icons/explosives.png",
+    icon_size = 64,
+    subgroup = "intermediate-product",
+    order = "d[explosives]"
+  }
+})
+
+
+
+
+
+
+-- combat recipes
+data:extend({
+  {
+    type = "recipe",
+    name = "shotgun",
+    enabled = false,
+    ingredients =
+    {
+      {"copper-plate", 3},
+      {"iron-gear-wheel", 3},
+      {"iron-plate", 2},
+      {"wood", 10},
+      {"steel-plate", 1},
+      {"pistol", 1},
+      {"shotgun-shell", 1}
+    },
+    result = "shotgun"
+  },
+  {
+    type = "recipe",
+    name = "pistol",
+    enabled = false,
+    ingredients =
+    {
+      {"iron-plate", 2},
+      {"copper-plate", 2},
+      {"firearm-magazine", 3},
+      {"iron-stick", 1},
+      {"iron-gear-wheel", 1}
+    },
+    result = "pistol"
+  },
+  {
+    type = "recipe",
+    name = "shotgun-shell",
+    enabled = false,
+    ingredients =
+    {
+      {"iron-plate", 1},
+      {"copper-plate", 3},
+      {"firearm-magazine", 3},
+      {"iron-stick", 1},
+      {"iron-gear-wheel", 4}
+    },
+    result_count = 5,
+    result = "shotgun-shell"
+  },
+  {
+    type = "recipe",
+    name = "grenade",
+    enabled = false,
+    ingredients =
+    {
+      {"coal", 8},
+      {"iron-plate", 2},
+      {"copper-cable", 5},
+      {"stone-brick", 1}
+    },
+    result = "grenade"
+  },
+  {
+    type = "recipe",
+    name = "stone-wall",
+    enabled = false,
+    ingredients =
+    {
+      {"stone-brick", 2},
+      {"stone", 2},
+      {"stone-furnace", 1}
+    },
+    result = "stone-wall"
+  },
+  {
+    type = "recipe",
+    name = "gun-turret",
+    enabled = false,
+    ingredients =
+    {
+      {"iron-plate", 3},
+      {"copper-plate", 4},
+      {"firearm-magazine", 3},
+      {"iron-stick", 4},
+      {"iron-gear-wheel", 3},
+      {"burner-inserter", 2}
+    },
+    result = "gun-turret"
+  },
+  {
+    type = "recipe",
+    name = "radar",
+    enabled = false,
+    ingredients =
+    {
+      {"electronic-circuit", 3},
+      {"iron-plate", 2},
+      {"copper-plate", 2},
+      {"iron-stick", 2},
+      {"iron-gear-wheel", 2},
+      {"stone-brick", 3}
+    },
+    result = "radar"
+  },
+  {
+    type = "recipe",
+    name = "battery-equipment",
+    category = "crafting-with-fluid",
+    enabled = false,
+    ingredients =
+    {
+      {"steel-plate", 5},
+      {"accumulator", 1},
+      {type = "fluid", name = "petroleum-gas", amount = 10}
+    },
+    result = "battery-equipment"
+  },
+  {
+    type = "recipe",
+    name = "battery-mk2-equipment",
+    category = "crafting-with-fluid",
+    enabled = false,
+    ingredients =
+    {
+      {"processing-unit", 3},
+      {"low-density-structure", 5},
+      {"battery-equipment", 6},
+      {type = "fluid", name = "sulfuric-acid", amount = 20},
+      {"accumulator", 1}
+    },
+    result = "battery-mk2-equipment"
+  },
+  {
+    type = "recipe",
+    name = "solar-panel-equipment",
+    category = "crafting-with-fluid",
+    enabled = false,
+    ingredients =
+    {
+      {"advanced-circuit", 1},
+      {"steel-plate", 2},
+      {"solar-panel", 1},
+      {"medium-electric-pole", 1},
+      {type = "fluid", name = "water", amount = 100}
+    },
+    result = "solar-panel-equipment"
   }
 })
