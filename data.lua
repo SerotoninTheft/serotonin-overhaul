@@ -1661,7 +1661,7 @@ data:extend({
   {
     type = "recipe",
     name = "radar",
-    enabled = false,
+    enabled = true,
     ingredients =
     {
       {"electronic-circuit", 3},
