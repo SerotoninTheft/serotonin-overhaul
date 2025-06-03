@@ -1,4 +1,47 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.1
+Date: 11. 10. 2024
+  Major Features:
+    - Fixed wood circuit dependencies
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0
+Date: 11. 10. 2024
+  Major Features:
+    - Updated to 2.0 (Note: Space Age recipe changes not included, those will be in a future addon mod)
+---------------------------------------------------------------------------------------------------
+Version: 0.0.9
+Date: 08. 18. 2024
+  Major Features:
+    - Burner inserter restraining order was made optional due to popular nondemand
+---------------------------------------------------------------------------------------------------
+Version: 0.0.8
+Date: 08. 17. 2024
+  Major Features:
+    - Burner inserters will now run away from you (Adds dependency for another mod, you may have to download this if it doesn't automatically do so)
+---------------------------------------------------------------------------------------------------
+Version: 0.0.7
+Date: 08. 14. 2024
+  Major Features:
+    - Added required dependencies for my wood circuit and microplastics from fish mods in order to artificially inflate my mod download count
+---------------------------------------------------------------------------------------------------
+Version: 0.0.6
+Date: 08. 12. 2024
+  Major Features:
+    - Fixed Pistol recipe
+---------------------------------------------------------------------------------------------------
+Version: 0.0.5
+Date: 08. 11. 2024
+  Major Features:
+    - Fixed Radar recipe
+---------------------------------------------------------------------------------------------------
+Version: 0.0.4
+Date: 08. 06. 2024
+  Major Features:
+    - Completely overhauled Oil and Chemical recipes (basic and advanced oil processing, sulfuric acid, cracking recipes, lubricant, plastic bar, sulfur, battery, explosives)
+    - Overhauled some Combat recipes (pistol, shotgun, shotgun shells, grenade, wall, gun turret, radar, personal battery, personal battery mk2, portable solar panel)
+    - Increased difficulty of buffer chest, which could be used in the same way as requester chests
+    - Adjusted recipes to increase copper usage (Copper cable, electronic circuit, advanced circuit, low density structure, substation, solar panel, heat pipe)
+---------------------------------------------------------------------------------------------------
 Version: 0.0.3
 Date: 07. 11. 2024
   Major Features:
